@@ -1,13 +1,14 @@
 {
-  "name": "vercel-expenses-api",
-  "version": "1.0.0",
-  "private": true,
-  "type": "module",
-  "scripts": {
-    "dev": "vercel dev",
-    "deploy": "vercel --prod"
+  "version": 2,
+  "functions": {
+    "api/**/*.ts": {
+      "runtime": "@vercel/node@3.0.0"
+    },
+    "api/**/*.js": {
+      "runtime": "@vercel/node@3.0.0"
+    }
   },
-  "dependencies": {
-    "@vercel/node": "^3.0.0"
-  }
+  "rewrites": [
+    { "source": "/api/(.*)", "destination": "/api/$1" }
+  ]
 }
